@@ -12,7 +12,9 @@ time.sleep(1)
 driver.get(web)
 
 parentElement = driver.find_element(By.CLASS_NAME, 'adbl-impression-container')
-products = parentElement.find_elements(By.XPATH, './/li')  # Use find_elements to find multiple elements
+print(parentElement.text)
+products = parentElement.find_elements(By.XPATH, './div/span/ul/li')  # Use find_elements to find multiple elements
+print(products)
 
 book_title = []
 book_author = []
@@ -27,6 +29,6 @@ driver.quit()
 
 # dataframe
 df_books = pd.DataFrame({'title': book_title, 'author': book_author, 'length': book_length})
-df_books.to_csv('data.csv', index=False)
+df_books.to_csv('data.csv', index=False)  # df_books.to_json for json format
 
 # time.sleep(1000)
